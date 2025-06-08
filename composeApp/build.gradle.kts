@@ -33,6 +33,10 @@ kotlin {
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
+
+            implementation(libs.koin.android)
+            implementation(libs.koin.androidx.compose)
+
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -43,6 +47,15 @@ kotlin {
             implementation(compose.components.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtimeCompose)
+
+            api(libs.koin.core)
+            implementation(libs.koin.compose)
+            implementation(libs.koin.compose.viewmodel)
+            implementation(libs.lifecycle.viewmodel)
+            implementation(libs.kotlinx.coroutines.core)
+            implementation(libs.navigation.compose)
+
+
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
@@ -56,8 +69,8 @@ android {
 
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     sourceSets["main"].res.srcDirs("src/androidMain/res")
-
     sourceSets["main"].resources.srcDirs("src/commonMain/resources")
+
     defaultConfig {
         applicationId = "org.hasan.project"
         minSdk = libs.versions.android.minSdk.get().toInt()
