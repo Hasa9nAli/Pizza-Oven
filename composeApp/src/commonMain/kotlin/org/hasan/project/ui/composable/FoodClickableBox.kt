@@ -14,6 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import org.hasan.project.ui.theme.mediumUnit
 import org.hasan.project.ui.theme.smallUnit
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
@@ -25,6 +26,7 @@ fun FoodClickableBox(
 ){
     Box(
         modifier = Modifier
+            .padding(end = mediumUnit)
             .size(64.dp)
             .background(
                 color = if (isSelected) Color(0xFFD7FDD7) else Color(0x4DD7FDD7),
@@ -36,6 +38,5 @@ fun FoodClickableBox(
         contentAlignment = Alignment.Center
     ) {
         Image(painter = painterResource(image), null)
-
     }
 }
