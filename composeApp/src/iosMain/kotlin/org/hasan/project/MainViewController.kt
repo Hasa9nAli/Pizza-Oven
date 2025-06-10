@@ -1,7 +1,7 @@
 package org.hasan.project
 
 import androidx.compose.ui.window.ComposeUIViewController
-import com.hasan.test.di.initKoin
+import org.hasan.project.di.initKoin
 
 fun MainViewController() = ComposeUIViewController(
     configure = {

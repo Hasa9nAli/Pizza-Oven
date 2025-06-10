@@ -1,4 +1,4 @@
-package org.hasan.project.theme
+package org.hasan.project.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

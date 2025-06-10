@@ -1,4 +1,4 @@
-package org.hasan.project.composable.foodComposable
+package org.hasan.project.ui.composable.foodComposable
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.AnimationSpec
@@ -20,48 +20,43 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import org.hasan.project.theme.largeUnit
+import org.hasan.project.ui.theme.largeUnit
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
-import pizzaoven.composeapp.generated.resources.Basil_1
-import pizzaoven.composeapp.generated.resources.Basil_2
-import pizzaoven.composeapp.generated.resources.Basil_3
-import pizzaoven.composeapp.generated.resources.Basil_4
-import pizzaoven.composeapp.generated.resources.Basil_5
-import pizzaoven.composeapp.generated.resources.Basil_6
-import pizzaoven.composeapp.generated.resources.Basil_7
-import pizzaoven.composeapp.generated.resources.Basil_8
-import pizzaoven.composeapp.generated.resources.Basil_9
 import pizzaoven.composeapp.generated.resources.Res
+import pizzaoven.composeapp.generated.resources.Sausage_1
+import pizzaoven.composeapp.generated.resources.Sausage_2
+import pizzaoven.composeapp.generated.resources.Sausage_3
+import pizzaoven.composeapp.generated.resources.Sausage_4
+import pizzaoven.composeapp.generated.resources.Sausage_5
+import pizzaoven.composeapp.generated.resources.Sausage_6
+import pizzaoven.composeapp.generated.resources.Sausage_7
+import pizzaoven.composeapp.generated.resources.Sausage_8
+import pizzaoven.composeapp.generated.resources.Sausage_9
+
 
 @Composable
-fun BasilComponent(
+fun SausageComponent(
     isSelected: Boolean = true,
     onSelect: () -> Unit = {}
 ) {
-    // Animation states
-
-
-    // Trigger animation on composition
     LaunchedEffect(Unit) {
         onSelect()
     }
 
-    // Common animation spec
     val animationSpec = spring<Dp>(
-        dampingRatio = 0.5f,
-        stiffness = 100f
+        dampingRatio = 0.4f,
+        stiffness = 80f
     )
 
     Box(
         contentAlignment = Alignment.Center,
         modifier = Modifier.fillMaxWidth()
     ) {
-        // First 4 images come from left with staggered delay
         AnimatedImage(
-            resId = Res.drawable.Basil_1,
-            targetOffset = 10.dp to -30.dp,
-            startOffset = 0.dp to -30.dp,
+            resId = Res.drawable.Sausage_1,
+            targetOffset = 30.dp to (-65).dp,
+            startOffset = 30.dp to (-200).dp,
             delay = 100,
             animationSpec = animationSpec,
             visible = isSelected,
@@ -69,9 +64,19 @@ fun BasilComponent(
         )
 
         AnimatedImage(
-            resId = Res.drawable.Basil_2,
-            targetOffset = -50.dp to -30.dp,
-            startOffset = (0).dp to -30.dp,
+            resId = Res.drawable.Sausage_2,
+            targetOffset = (-15).dp to (-10).dp,
+            startOffset = (-200).dp to (-10).dp,
+            delay = 150,
+            animationSpec = animationSpec,
+            visible = isSelected,
+            size = largeUnit
+        )
+
+        AnimatedImage(
+            resId = Res.drawable.Sausage_3,
+            targetOffset = 10.dp to 40.dp,
+            startOffset = 10.dp to 200.dp,
             delay = 200,
             animationSpec = animationSpec,
             visible = isSelected,
@@ -79,30 +84,19 @@ fun BasilComponent(
         )
 
         AnimatedImage(
-            resId = Res.drawable.Basil_3,
-            targetOffset = -30.dp to 10.dp,
-            startOffset = (0).dp to 10.dp,
-            delay = 300,
+            resId = Res.drawable.Sausage_4,
+            targetOffset = 50.dp to 20.dp,
+            startOffset = 200.dp to 20.dp,
+            delay = 250,
             animationSpec = animationSpec,
             visible = isSelected,
             size = largeUnit
         )
 
         AnimatedImage(
-            resId = Res.drawable.Basil_4,
-            targetOffset = 40.dp to 50.dp,
-            startOffset = (0).dp to 50.dp,
-            delay = 400,
-            animationSpec = animationSpec,
-            visible = isSelected,
-            size = largeUnit
-        )
-
-        // Next 4 images come from right with staggered delay
-        AnimatedImage(
-            resId = Res.drawable.Basil_5,
-            targetOffset = 15.dp to -10.dp,
-            startOffset = 0.dp to -10.dp,
+            resId = Res.drawable.Sausage_5,
+            targetOffset = (-50).dp to 10.dp,
+            startOffset = (-200).dp to 10.dp,
             delay = 100,
             animationSpec = animationSpec,
             visible = isSelected,
@@ -110,9 +104,9 @@ fun BasilComponent(
         )
 
         AnimatedImage(
-            resId = Res.drawable.Basil_6,
-            targetOffset = -40.dp to -10.dp,
-            startOffset = 0.dp to -10.dp,
+            resId = Res.drawable.Sausage_6,
+            targetOffset = 20.dp to (-40).dp,
+            startOffset = 20.dp to (-200).dp,
             delay = 200,
             animationSpec = animationSpec,
             visible = isSelected,
@@ -120,9 +114,9 @@ fun BasilComponent(
         )
 
         AnimatedImage(
-            resId = Res.drawable.Basil_7,
-            targetOffset = 25.dp to 15.dp,
-            startOffset = 0.dp to 15.dp,
+            resId = Res.drawable.Sausage_7,
+            targetOffset = (-40).dp to (-55).dp,
+            startOffset = (-40).dp to 200.dp,
             delay = 300,
             animationSpec = animationSpec,
             visible = isSelected,
@@ -130,24 +124,26 @@ fun BasilComponent(
         )
 
         AnimatedImage(
-            resId = Res.drawable.Basil_8,
+            resId = Res.drawable.Sausage_8,
             targetOffset = -10.dp to 60.dp,
-            startOffset = 0.dp to 60.dp,
+            startOffset = 200.dp to 60.dp,
             delay = 400,
             animationSpec = animationSpec,
             visible = isSelected,
             size = largeUnit
         )
 
-        // Last image comes from top
         AnimatedImage(
-            resId = Res.drawable.Basil_9,
-            targetOffset = -15.dp to -50.dp,
-            startOffset = -15.dp to (-200).dp,
+            resId = Res.drawable.Sausage_9,
+            targetOffset = 60.dp to 0.dp,
+            startOffset = (-200).dp to 0.dp,
             delay = 500,
-            animationSpec = animationSpec,
+            animationSpec = spring(
+                dampingRatio = 0.3f,
+                stiffness = 50f
+            ),
             visible = isSelected,
-            size = largeUnit
+            size = largeUnit * 1.2f
         )
     }
 }
@@ -171,26 +167,24 @@ private fun AnimatedImage(
     val yOffset by animateDpAsState(
         targetValue = if (visible) targetOffset.second else startOffset.second,
         animationSpec = tween(delay)
-        )
+    )
+
     val sizeAnimatable = remember { Animatable(100.dp, Dp.VectorConverter) }
     val alphaAnimatable = remember { Animatable(0.8f) }
+
     LaunchedEffect(Unit) {
-
-            sizeAnimatable.animateTo(
-                targetValue = 200.dp,
-                animationSpec = tween(durationMillis = 300)
-            )
-
-            sizeAnimatable.animateTo(
-                targetValue = 24.dp,
-                animationSpec = tween(durationMillis = 300)
-            )
-
+        sizeAnimatable.animateTo(
+            targetValue = 200.dp,
+            animationSpec = tween(durationMillis = 300)
+        )
+        sizeAnimatable.animateTo(
+            targetValue = size,
+            animationSpec = tween(durationMillis = 300)
+        )
         alphaAnimatable.animateTo(
-                targetValue = 1f,
-                animationSpec = tween(durationMillis = 300)
-            )
-
+            targetValue = 1f,
+            animationSpec = tween(durationMillis = 300)
+        )
     }
 
     Image(

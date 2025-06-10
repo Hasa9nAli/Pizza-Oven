@@ -1,4 +1,4 @@
-package com.hasan.test.ui.composable.foodComposable
+package org.hasan.project.ui.composable.foodComposable
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.AnimationSpec
@@ -20,32 +20,29 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import org.hasan.project.theme.largeUnit
+import org.hasan.project.ui.theme.largeUnit
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
-import pizzaoven.composeapp.generated.resources.Onion_1
-import pizzaoven.composeapp.generated.resources.Onion_2
-import pizzaoven.composeapp.generated.resources.Onion_3
-import pizzaoven.composeapp.generated.resources.Onion_4
-import pizzaoven.composeapp.generated.resources.Onion_5
-import pizzaoven.composeapp.generated.resources.Onion_6
-import pizzaoven.composeapp.generated.resources.Onion_7
-import pizzaoven.composeapp.generated.resources.Onion_8
-import pizzaoven.composeapp.generated.resources.Onion_9
+import pizzaoven.composeapp.generated.resources.Broccoli_1
+import pizzaoven.composeapp.generated.resources.Broccoli_2
+import pizzaoven.composeapp.generated.resources.Broccoli_3
+import pizzaoven.composeapp.generated.resources.Broccoli_4
+import pizzaoven.composeapp.generated.resources.Broccoli_5
+import pizzaoven.composeapp.generated.resources.Broccoli_6
+import pizzaoven.composeapp.generated.resources.Broccoli_7
+import pizzaoven.composeapp.generated.resources.Broccoli_8
+import pizzaoven.composeapp.generated.resources.Broccoli_9
 import pizzaoven.composeapp.generated.resources.Res
 
-
 @Composable
-fun OnionComponent(
+fun BroccoliComponent(
     isSelected: Boolean = true,
     onSelect: () -> Unit = {}
 ) {
-    // Trigger animation on composition
     LaunchedEffect(Unit) {
         onSelect()
     }
 
-    // Common animation spec
     val animationSpec = spring<Dp>(
         dampingRatio = 0.5f,
         stiffness = 100f
@@ -55,9 +52,8 @@ fun OnionComponent(
         contentAlignment = Alignment.Center,
         modifier = Modifier.fillMaxWidth()
     ) {
-        // First group of images with staggered animation
         AnimatedImage(
-            resId = Res.drawable.Onion_1,
+            resId = Res.drawable.Broccoli_1,
             targetOffset = 25.dp to -25.dp,
             startOffset = 0.dp to -25.dp,
             delay = 100,
@@ -67,7 +63,7 @@ fun OnionComponent(
         )
 
         AnimatedImage(
-            resId = Res.drawable.Onion_2,
+            resId = Res.drawable.Broccoli_2,
             targetOffset = 0.dp to 0.dp,
             startOffset = 0.dp to 0.dp,
             delay = 150,
@@ -77,7 +73,7 @@ fun OnionComponent(
         )
 
         AnimatedImage(
-            resId = Res.drawable.Onion_3,
+            resId = Res.drawable.Broccoli_3,
             targetOffset = 10.dp to 40.dp,
             startOffset = 0.dp to 40.dp,
             delay = 200,
@@ -87,7 +83,7 @@ fun OnionComponent(
         )
 
         AnimatedImage(
-            resId = Res.drawable.Onion_4,
+            resId = Res.drawable.Broccoli_4,
             targetOffset = 50.dp to 20.dp,
             startOffset = 0.dp to 20.dp,
             delay = 250,
@@ -96,10 +92,9 @@ fun OnionComponent(
             size = largeUnit
         )
 
-        // Second group with different animation timing
         AnimatedImage(
-            resId = Res.drawable.Onion_5,
-            targetOffset = -50.dp to 10.dp,
+            resId = Res.drawable.Broccoli_5,
+            targetOffset = (-50).dp to 10.dp,
             startOffset = 0.dp to 10.dp,
             delay = 100,
             animationSpec = animationSpec,
@@ -108,9 +103,9 @@ fun OnionComponent(
         )
 
         AnimatedImage(
-            resId = Res.drawable.Onion_6,
-            targetOffset = 20.dp to -40.dp,
-            startOffset = 0.dp to -40.dp,
+            resId = Res.drawable.Broccoli_6,
+            targetOffset = (-40).dp to 55.dp,
+            startOffset = 0.dp to 55.dp,
             delay = 200,
             animationSpec = animationSpec,
             visible = isSelected,
@@ -118,9 +113,9 @@ fun OnionComponent(
         )
 
         AnimatedImage(
-            resId = Res.drawable.Onion_7,
-            targetOffset = -40.dp to -55.dp,
-            startOffset = 0.dp to -55.dp,
+            resId = Res.drawable.Broccoli_7,
+            targetOffset = (-40).dp to (-55).dp,
+            startOffset = 0.dp to (-55).dp,
             delay = 300,
             animationSpec = animationSpec,
             visible = isSelected,
@@ -128,20 +123,19 @@ fun OnionComponent(
         )
 
         AnimatedImage(
-            resId = Res.drawable.Onion_8,
-            targetOffset = -10.dp to 60.dp,
-            startOffset = 0.dp to 60.dp,
+            resId = Res.drawable.Broccoli_8,
+            targetOffset = 50.dp to (-50).dp,
+            startOffset = 0.dp to (-50).dp,
             delay = 400,
             animationSpec = animationSpec,
             visible = isSelected,
             size = largeUnit
         )
 
-        // Center piece with special animation
         AnimatedImage(
-            resId = Res.drawable.Onion_9,
-            targetOffset = 60.dp to 0.dp,
-            startOffset = 60.dp to (-150).dp,
+            resId = Res.drawable.Broccoli_9,
+            targetOffset = (-15).dp to 40.dp,
+            startOffset = (-15).dp to (-150).dp,
             delay = 500,
             animationSpec = animationSpec,
             visible = isSelected,
@@ -163,7 +157,6 @@ private fun AnimatedImage(
     val xOffset by animateDpAsState(
         targetValue = if (visible) targetOffset.first else startOffset.first,
         animationSpec = animationSpec,
-        finishedListener = { /* Optional completion callback */ }
     )
 
     val yOffset by animateDpAsState(

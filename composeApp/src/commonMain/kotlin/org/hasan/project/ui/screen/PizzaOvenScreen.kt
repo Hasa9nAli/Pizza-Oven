@@ -1,6 +1,6 @@
 @file:OptIn(KoinExperimentalAPI::class)
 
-package org.hasan.project.screen
+package org.hasan.project.ui.screen
 
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedVisibility
@@ -48,26 +48,26 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.hasan.test.ui.composable.foodComposable.BroccoliComponent
-import com.hasan.test.ui.composable.foodComposable.FoodClickableBox
-import com.hasan.test.ui.composable.foodComposable.MushroomComponent
-import com.hasan.test.ui.composable.foodComposable.OnionComponent
-import com.hasan.test.ui.composable.foodComposable.SausageComponent
-import com.hasan.test.ui.theme.SpacerVerticalMedium
-import com.hasan.test.ui.theme.SpacerVerticalSmall
+import org.hasan.project.ui.composable.foodComposable.BroccoliComponent
+import org.hasan.project.ui.composable.FoodClickableBox
+import org.hasan.project.ui.composable.foodComposable.MushroomComponent
+import org.hasan.project.ui.composable.foodComposable.OnionComponent
+import org.hasan.project.ui.composable.foodComposable.SausageComponent
+import org.hasan.project.ui.theme.SpacerVerticalMedium
+import org.hasan.project.ui.theme.SpacerVerticalSmall
 import com.hasan.test.viewModel.PizzaOvenViewModel
-import org.hasan.project.composable.PlateSizeSelector
-import org.hasan.project.composable.foodComposable.BasilComponent
-import org.hasan.project.theme.largeUnit
-import org.hasan.project.theme.mediumUnit
-import org.hasan.project.theme.smallUnit
+import org.hasan.project.ui.composable.PlateSizeSelector
+import org.hasan.project.ui.composable.foodComposable.BasilComponent
+import org.hasan.project.ui.theme.largeUnit
+import org.hasan.project.ui.theme.mediumUnit
+import org.hasan.project.ui.theme.smallUnit
 import org.jetbrains.compose.resources.painterResource
 import org.koin.compose.viewmodel.koinViewModel
 import org.koin.core.annotation.KoinExperimentalAPI
-import pizzaoven.composeapp.generated.resources.Basil_6
-import pizzaoven.composeapp.generated.resources.Broccoli_7
-import pizzaoven.composeapp.generated.resources.Mushroom_5
-import pizzaoven.composeapp.generated.resources.Onion_7
+import pizzaoven.composeapp.generated.resources.Basil_3
+import pizzaoven.composeapp.generated.resources.Broccoli_3
+import pizzaoven.composeapp.generated.resources.Mushroom_3
+import pizzaoven.composeapp.generated.resources.Onion_3
 import pizzaoven.composeapp.generated.resources.Plate
 import pizzaoven.composeapp.generated.resources.Res
 import pizzaoven.composeapp.generated.resources.Sausage_3
@@ -91,7 +91,6 @@ fun PizzaOvenScreen() {
 }
 
 
-@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun PizzaOvenScreenContent(
     state: PizzaOvenUIState,
@@ -251,7 +250,7 @@ fun PlateSection(
         pageCount = { state.listOfPlate.size }),
 
     ) {
-    Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
+    Box(Modifier.fillMaxWidth().height(250.dp), contentAlignment = Alignment.Center) {
         Image(
             painter = painterResource(Res.drawable.Plate),
             null, modifier = Modifier.size(240.dp)
@@ -319,8 +318,8 @@ fun PlateSection(
                 }
                 AnimatedVisibility(
                     state.listOfPlate[it].isHasSausage,
-                    enter = scaleIn(animationSpec = tween(100)),
-                    exit = scaleOut(animationSpec = tween(1000))
+                    enter = scaleIn(tween()),
+                    exit = scaleOut() + fadeOut()
                 ) {
                     SausageComponent(
                         state.listOfPlate[it].isHasSausage,
@@ -361,7 +360,7 @@ fun ChooseFood(
 
         item {
             FoodClickableBox(
-                image = Res.drawable.Basil_6,
+                image = Res.drawable.Basil_3,
                 isSelected = state.listOfPlate[plateNumber].isHasBasil
             ) {
                 onClickBasil(plateNumber)
@@ -370,7 +369,7 @@ fun ChooseFood(
         item {
 
             FoodClickableBox(
-                image = Res.drawable.Onion_7,
+                image = Res.drawable.Onion_3,
                 isSelected = state.listOfPlate[plateNumber].isHasOnion
             ) {
                 onClickOnion(plateNumber)
@@ -378,7 +377,15 @@ fun ChooseFood(
         }
         item {
             FoodClickableBox(
-                image = Res.drawable.Mushroom_5,
+                image = Res.drawable.Broccoli_3,
+                isSelected = state.listOfPlate[plateNumber].isHasBroccoli
+            ) {
+                onClickBroccoli(plateNumber)
+            }
+        }
+        item {
+            FoodClickableBox(
+                image = Res.drawable.Mushroom_3,
                 isSelected = state.listOfPlate[plateNumber].isHasMushroom
             ) {
                 onClickMushroom(plateNumber)
@@ -395,14 +402,7 @@ fun ChooseFood(
             }
         }
 
-        item {
-            FoodClickableBox(
-                image = Res.drawable.Broccoli_7,
-                isSelected = state.listOfPlate[plateNumber].isHasBroccoli
-            ) {
-                onClickBroccoli(plateNumber)
-            }
-        }
+
     }
 }
 

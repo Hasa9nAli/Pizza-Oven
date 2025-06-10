@@ -1,7 +1,7 @@
 package org.hasan.project
 
 import android.app.Application
-import com.hasan.test.di.initKoin
+import org.hasan.project.di.initKoin
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 

@@ -1,4 +1,4 @@
-package com.hasan.test.di
+package org.hasan.project.di
 
 import org.hasan.project.di.viewModelModule
 import org.koin.core.context.startKoin

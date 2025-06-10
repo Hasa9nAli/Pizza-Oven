@@ -3,8 +3,8 @@ package com.hasan.test.viewModel
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import org.hasan.project.screen.PizzaOvenUIState
-import org.hasan.project.screen.Plate
+import org.hasan.project.ui.screen.PizzaOvenUIState
+import org.hasan.project.ui.screen.Plate
 import org.koin.core.component.KoinComponent
 
 class PizzaOvenViewModel: ViewModel(), KoinComponent {

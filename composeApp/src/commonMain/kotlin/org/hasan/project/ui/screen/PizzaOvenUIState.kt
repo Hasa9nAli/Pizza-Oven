@@ -1,4 +1,4 @@
-package org.hasan.project.screen
+package org.hasan.project.ui.screen
 
 import org.jetbrains.compose.resources.DrawableResource
 import pizzaoven.composeapp.generated.resources.Bread_1
@@ -33,7 +33,7 @@ data class PizzaOvenUIState(
             plateImage = Res.drawable.Bread_4
         ),
         PlateUIState(
-            name = "Pizza paste",
+            name = "Pizza Bread",
             price = "5$",
             plateImage = Res.drawable.Bread_5
         ),
