@@ -1,4 +1,4 @@
-package com.hasan.test.ui.composable.foodComposable
+package org.hasan.project.ui.composable
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -14,7 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import org.hasan.project.theme.smallUnit
+import org.hasan.project.ui.theme.smallUnit
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 
