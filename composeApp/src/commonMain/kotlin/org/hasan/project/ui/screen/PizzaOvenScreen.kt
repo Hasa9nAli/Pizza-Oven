@@ -312,7 +312,7 @@ fun PlateSection(
                 )
                 AnimatedVisibility(
                     state.listOfPlate[it].isHasMushroom,
-                    enter = scaleIn(tween()),
+                    enter = slideInVertically{ (it / 2  ) - (it/ 2)  } ,
                     exit = scaleOut() + fadeOut()
                 ) {
                     MushroomComponent(isSelected = state.listOfPlate[it].isHasMushroom) {
@@ -321,7 +321,7 @@ fun PlateSection(
                 }
                 AnimatedVisibility(
                     state.listOfPlate[it].isHasBasil,
-                    enter = scaleIn(tween()),
+                    enter = slideInVertically{ (it / 2  ) - (it/ 2)  } ,
                     exit = scaleOut() + fadeOut()
 
                 ) {
@@ -333,7 +333,7 @@ fun PlateSection(
                 }
                 AnimatedVisibility(
                     state.listOfPlate[it].isHasBroccoli,
-                    enter = scaleIn(tween()),
+                    enter = slideInVertically{ (it / 2  ) - (it/ 2)  } ,
                     exit = scaleOut() + fadeOut()
                 ) {
                     BroccoliComponent(state.listOfPlate[it].isHasBroccoli) {
@@ -342,7 +342,7 @@ fun PlateSection(
                 }
                 AnimatedVisibility(
                     state.listOfPlate[it].isHasOnion,
-                    enter = scaleIn(tween()),
+                    enter = slideInVertically{ (it / 2  ) - (it/ 2)  } ,
                     exit = scaleOut() + fadeOut()
                 ) {
                     OnionComponent(
@@ -353,7 +353,7 @@ fun PlateSection(
                 }
                 AnimatedVisibility(
                     state.listOfPlate[it].isHasSausage,
-                    enter = scaleIn(tween()),
+                    enter = slideInVertically{ (it / 2  ) - (it/ 2)  } ,
                     exit = scaleOut() + fadeOut()
                 ) {
                     SausageComponent(
@@ -362,7 +362,6 @@ fun PlateSection(
                         onClickSausage(it)
                     }
                 }
-
             }
         }
     }

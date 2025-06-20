@@ -20,6 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import org.hasan.project.ui.theme.xLargeUnit
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 import pizzaoven.composeapp.generated.resources.Mushroom_1
@@ -42,7 +43,24 @@ fun MushroomComponent(
     LaunchedEffect(Unit) {
         onSelect()
     }
+    data class Mushroom(
+        val resId: DrawableResource,
+        val targetOffset: Pair<Dp, Dp>,
+        val startOffset: Pair<Dp, Dp>,
+        val delay: Int
+    )
 
+    val listOfMushroom = listOf(
+        Mushroom(Res.drawable.Mushroom_1, 20.dp to (-40).dp, (-400).dp to (-40).dp, 100),
+        Mushroom(Res.drawable.Mushroom_2, (-40).dp to (-40).dp, 400.dp to (-40).dp, 200),
+        Mushroom(Res.drawable.Mushroom_3, (-40).dp to 40.dp, (-415).dp to 40.dp, 300),
+        Mushroom(Res.drawable.Mushroom_4, 50.dp to 20.dp, (-300).dp to 20.dp, 400),
+        Mushroom(Res.drawable.Mushroom_5, (-50).dp to 10.dp, (-900).dp to 10.dp, 100),
+        Mushroom(Res.drawable.Mushroom_6, 20.dp to (-40).dp, (-500).dp to (-40).dp, 200),
+        Mushroom(Res.drawable.Mushroom_7, (-10).dp to 60.dp, (-950).dp to 60.dp, 300),
+        Mushroom(Res.drawable.Mushroom_8, (-10).dp to (-60).dp, (-120).dp to (-60).dp, 400),
+        Mushroom(Res.drawable.Mushroom_9, (-20).dp to (-20).dp, (-120).dp to (-200).dp, 500)
+    )
     val animationSpec = spring<Dp>(
         dampingRatio = 0.5f,
         stiffness = 100f
@@ -52,100 +70,21 @@ fun MushroomComponent(
         contentAlignment = Alignment.Center,
         modifier = Modifier.fillMaxWidth()
     ) {
-        AnimatedImage(
-            resId = Res.drawable.Mushroom_1,
-            targetOffset = 20.dp to (-40).dp,
-            startOffset = (-400).dp to (-40).dp,
-            delay = 100,
-            animationSpec = animationSpec,
-            visible = isSelected,
-               
-        )
-
-        AnimatedImage(
-            resId = Res.drawable.Mushroom_2,
-            targetOffset = (-40).dp to (-40).dp,
-            startOffset = 400.dp to (-40).dp,
-            delay = 200,
-            animationSpec = animationSpec,
-            visible = isSelected,
-               
-        )
-
-        AnimatedImage(
-            resId = Res.drawable.Mushroom_3,
-            targetOffset = (-40).dp to 40.dp,
-            startOffset = (-415).dp to 40.dp,
-            delay = 300,
-            animationSpec = animationSpec,
-            visible = isSelected,
-               
-        )
-
-        AnimatedImage(
-            resId = Res.drawable.Mushroom_4,
-            targetOffset = 50.dp to 20.dp,
-            startOffset = (-300).dp to 20.dp,
-            delay = 400,
-            animationSpec = animationSpec,
-            visible = isSelected,
-               
-        )
-
-        AnimatedImage(
-            resId = Res.drawable.Mushroom_5,
-            targetOffset = (-50).dp to 10.dp,
-            startOffset = (-900).dp to 10.dp,
-            delay = 100,
-            animationSpec = animationSpec,
-            visible = isSelected,
-               
-        )
-
-        AnimatedImage(
-            resId = Res.drawable.Mushroom_6,
-            targetOffset = 20.dp to (-40).dp,
-            startOffset = (-500).dp to (-40).dp,
-            delay = 200,
-            animationSpec = animationSpec,
-            visible = isSelected,
-               
-        )
-
-        AnimatedImage(
-            resId = Res.drawable.Mushroom_7,
-            targetOffset = (-10).dp to 60.dp,
-            startOffset = (-950).dp to 60.dp,
-            delay = 300,
-            animationSpec = animationSpec,
-            visible = isSelected,
-               
-        )
-
-        AnimatedImage(
-            resId = Res.drawable.Mushroom_8,
-            targetOffset = (-10).dp to (-60).dp,
-            startOffset = (-120).dp to (-60).dp,
-            delay = 400,
-            animationSpec = animationSpec,
-            visible = isSelected,
-              
-        )
-
-        AnimatedImage(
-            resId = Res.drawable.Mushroom_9,
-            targetOffset = (-20).dp to (-20).dp,
-            startOffset = (-120).dp to (-200).dp,
-            delay = 500,
-            animationSpec = animationSpec,
-            visible = isSelected,
-              
-        )
+        listOfMushroom.forEach {
+            AnimatedImage(
+                resId = it.resId,
+                targetOffset = it.targetOffset,
+                startOffset = it.startOffset,
+                delay = it.delay,
+                animationSpec = animationSpec,
+                visible = isSelected,
+            )
+        }
     }
 }
 
 @Composable
-private fun AnimatedImage(
+fun AnimatedImage(
     resId: DrawableResource,
     targetOffset: Pair<Dp, Dp>,
     startOffset: Pair<Dp, Dp>,
@@ -162,22 +101,21 @@ private fun AnimatedImage(
         targetValue = if (visible) targetOffset.second else startOffset.second,
         animationSpec = tween(delay)
     )
-    val sizeAnimatable = remember { Animatable(100.dp, Dp.VectorConverter) }
+    val sizeAnimatable = remember { Animatable(200.dp, Dp.VectorConverter) }
     val alphaAnimatable = remember { Animatable(0.8f) }
     LaunchedEffect(Unit) {
+
         sizeAnimatable.animateTo(
             targetValue = 200.dp,
-            animationSpec = tween(durationMillis = 300)
+            animationSpec = tween(durationMillis = 100)
         )
-
         sizeAnimatable.animateTo(
-            targetValue = 24.dp,
-            animationSpec = tween(durationMillis = 300)
+            targetValue = xLargeUnit,
+            animationSpec = tween(durationMillis = 110)
         )
-
         alphaAnimatable.animateTo(
             targetValue = 1f,
-            animationSpec = tween(durationMillis = 300)
+            animationSpec = tween(durationMillis = 110)
         )
     }
 
